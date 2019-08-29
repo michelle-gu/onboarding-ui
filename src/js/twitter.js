@@ -28,6 +28,7 @@ function buildTimeline(responseText) {
 		// TODO: Each tweet message should be clickable, opening a new tab with the tweet on twitter.
 		var postLink = document.createElement("a");
 		postLink.href = post.url;
+		postLink.target = "_blank"
 		var postDiv = document.createElement("div");
 
 		var imageSpan = document.createElement("span");
