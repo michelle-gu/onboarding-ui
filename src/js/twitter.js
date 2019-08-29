@@ -1,10 +1,9 @@
 // AJAX request for timeline
 function getTimeline() {
-	console.log("caling getTimeline")
   	var xhr = new XMLHttpRequest();
     xhr.open('GET', 'http://127.0.0.1:8080/api/1.0/twitter/timeline', true);
 	xhr.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
+		if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
 			buildTimeline(this.responseText);
 		}
 	};
@@ -18,14 +17,12 @@ function getTimeline() {
 // Use JS to dynamically build timeline
 function buildTimeline(responseText) {
 	var jsonTimeline = JSON.parse(responseText).timeline;
-	console.log(jsonTimeline);
 	var timelineDiv = document.getElementById("timeline");
 	timelineDiv.innerHTML = "";
 
 	for (i = 0; i < jsonTimeline.length; i++) {
 		post = jsonTimeline[i];
 
-		// TODO: Each tweet message should be clickable, opening a new tab with the tweet on twitter.
 		var postLink = document.createElement("a");
 		postLink.href = post.url;
 		postLink.target = "_blank"
