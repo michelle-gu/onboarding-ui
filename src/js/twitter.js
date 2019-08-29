@@ -21,33 +21,33 @@ function buildTimeline(responseText) {
 	for (i = 0; i < jsonTimeline.length; i++) {
 		post = jsonTimeline[i];
 
+		// Each tweet message should be clickable, opening a new tab with the tweet on twitter.
 		var postDiv = document.createElement("div");
 
 		var imageSpan = document.createElement("span");
 		var image = document.createElement("img");
 		image.src = post.user.profileImageUrl;
+		imageSpan.appendChild(image);
+
+		var timeSpan = document.createElement("span");
+		var time = document.createTextNode(new Date(post.createdAt));
+		timeSpan.appendChild(time);
 
 		var messageSpan = document.createElement("span");
-		var message = document.createTextNode(new Date(post.createdAt) + ' ' + post.message);
-		imageSpan.appendChild(image);
+		var message = document.createTextNode(post.message);
 		messageSpan.appendChild(message);
+
 		postDiv.appendChild(imageSpan);
+		postDiv.appendChild(timeSpan);
 		postDiv.appendChild(messageSpan);
 		if (i % 2 == 0) {
-			postDiv.style.backgroundColor = "gray";
+			postDiv.style.backgroundColor = "red";
 		} else {
-			postDiv.style.backgroundColor = "lightgray";
+			postDiv.style.backgroundColor = "yellow";
 		}
 
 		timelineDiv.appendChild(postDiv);
 
 	}
 }
-
-	// The timestamp should be converted to a human readable date time.
-	// For every other tweet, alternate the background color.
-	// Each tweet message should be clickable, opening a new tab with the tweet on twitter.
-	// Include an image of the user who made the tweet.
-	// Also ensure you use a span element in your code as well.
-
 
