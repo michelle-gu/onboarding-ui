@@ -45,9 +45,9 @@ function buildTimeline(responseText) {
 		postDiv.appendChild(timeSpan);
 		postDiv.appendChild(messageSpan);
 		if (i % 2 == 0) {
-			postDiv.style.backgroundColor = "red";
+			postDiv.style.backgroundColor = "#e8f5fd";
 		} else {
-			postDiv.style.backgroundColor = "yellow";
+			postDiv.style.backgroundColor = "#e9e9e9";
 		}
 
 		postLink.appendChild(postDiv);
