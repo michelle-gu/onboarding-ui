@@ -15,7 +15,10 @@ function getTimeline() {
 	xhr.send();
 }
 
+<<<<<<< HEAD
 // Use JS to dynamically build timeline
+=======
+>>>>>>> 6dd637ef4b5a1d51f190e6b36ed99386c5db5855
 function buildTimeline(responseText) {
 	var jsonTimeline = JSON.parse(responseText).timeline;
 	console.log(jsonTimeline);
@@ -57,5 +60,8 @@ function buildTimeline(responseText) {
 	}
 }
 
+<<<<<<< HEAD
 // Show timeline on load
 getTimeline();
+=======
+>>>>>>> 6dd637ef4b5a1d51f190e6b36ed99386c5db5855
