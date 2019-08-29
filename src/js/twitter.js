@@ -24,7 +24,9 @@ function buildTimeline(responseText) {
 	for (i = 0; i < jsonTimeline.length; i++) {
 		post = jsonTimeline[i];
 
-		// Each tweet message should be clickable, opening a new tab with the tweet on twitter.
+		// TODO: Each tweet message should be clickable, opening a new tab with the tweet on twitter.
+		var postLink = document.createElement("a");
+		postLink.href = post.url;
 		var postDiv = document.createElement("div");
 
 		var imageSpan = document.createElement("span");
@@ -49,7 +51,8 @@ function buildTimeline(responseText) {
 			postDiv.style.backgroundColor = "yellow";
 		}
 
-		timelineDiv.appendChild(postDiv);
+		postLink.appendChild(postDiv);
+		timelineDiv.appendChild(postLink);
 
 	}
 }
