@@ -1,0 +1,11 @@
+/* add every other row colors*/
+
+body {
+	font-family: "Segoe UI", Frutiger, "Helvetica Neue", Arial, sans-serif;
+}
+
+h1 {
+	font-size: 40px;
+	font-weight: bold;
+	text-align: center;
+}
