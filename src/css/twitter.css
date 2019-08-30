@@ -16,8 +16,8 @@ a {
 }
 
 .post {
-	font-size: 16px;
-	border: 1px solid lightgray;
+	font-size: 15px;
+	border-bottom: 1px solid lightgray;
 	height: 150px;
 	display: flex;
 	align-items: center;
@@ -64,8 +64,8 @@ a {
 
 #profile-img {
 	border-radius: 50%;
-    width: 75px;
-    height: 75px;
+    width: 70px;
+    height: 70px;
 }
 
 #timeline-button-div {
@@ -75,7 +75,7 @@ a {
 #timeline-button {
 	font-size: 12px;
 	border-radius: 25px;
-	padding: 4px 12px;
+	padding: 5px 10px;
 }
 
 #timeline {
