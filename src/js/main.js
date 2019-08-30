@@ -28,7 +28,18 @@ const server = http.createServer((req, res) => {
                 res.write(data);  
             }
             res.end();    
-        });  
+        });
+    } else if (path.split('.')[1] == 'css') { // CSS files
+        fs.readFile(__dirname + '/..' + path, function(error, data) {  
+            if (error) {  
+                res.writeHead(404);  
+                res.write('File not found');  
+            } else {  
+                res.writeHead(200, {'Content-Type': 'text/css'});
+                res.write(data);  
+            }
+            res.end();    
+        });   
     } else { // Page doesn't exist
         res.writeHead(404);  
         res.write("This page doesn't exist.");  
