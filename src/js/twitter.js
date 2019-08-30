@@ -23,36 +23,66 @@ function buildTimeline(responseText) {
 	for (i = 0; i < jsonTimeline.length; i++) {
 		post = jsonTimeline[i];
 
-		var postLink = document.createElement("a");
-		postLink.href = post.url;
-		postLink.target = "_blank"
-		var postDiv = document.createElement("div");
+		// Create user info part of post
+		var userDiv = document.createElement("div");
+		userDiv.className = "user"
 
-		var imageSpan = document.createElement("span");
 		var image = document.createElement("img");
+		image.id = "profile-img";
 		image.src = post.user.profileImageUrl;
-		imageSpan.appendChild(image);
 
-		var timeSpan = document.createElement("span");
-		var time = document.createTextNode(new Date(post.createdAt));
-		timeSpan.appendChild(time);
+		var nameSpan = document.createElement("span");
+		nameSpan.className = "name";
+		var name = document.createTextNode(post.user.name);
+		nameSpan.appendChild(name);
 
-		var messageSpan = document.createElement("span");
+		var screenNameSpan = document.createElement("span");
+		screenNameSpan.className = "name small-text";
+		var screenName = document.createTextNode(post.user.twitterHandle);
+		screenNameSpan.appendChild(screenName);
+
+		userDiv.appendChild(image);
+		userDiv.appendChild(nameSpan);
+		userDiv.appendChild(screenNameSpan);
+
+		// Create tweet info part of post
+		var tweetDiv = document.createElement("div");
+		tweetDiv.className = "tweet"
+
+		var timeDiv = document.createElement("div");
+		timeDiv.className = "date small-text";
+		var options = { month: 'short', day: 'numeric' };
+		var createdAt  = new Date(post.createdAt);
+		var time = document.createTextNode(createdAt.toLocaleDateString("en-US", options));
+		timeDiv.appendChild(time);
+
+		var messageDiv = document.createElement("div");
 		var message = document.createTextNode(post.message);
-		messageSpan.appendChild(message);
+		messageDiv.appendChild(message);
 
-		postDiv.appendChild(imageSpan);
-		postDiv.appendChild(timeSpan);
-		postDiv.appendChild(messageSpan);
+		tweetDiv.appendChild(timeDiv);
+		tweetDiv.appendChild(messageDiv);
+
+		// Link tweet to twitter
+		var tweetLink = document.createElement("a");
+		tweetLink.href = post.url;
+		tweetLink.target = "_blank"
+		tweetLink.appendChild(tweetDiv);
+
+		// Create post
+		var postDiv = document.createElement("div");
+		postDiv.className = "post"
+		postDiv.appendChild(userDiv);
+		postDiv.appendChild(tweetLink);
+		// Alternate colors
 		if (i % 2 == 0) {
 			postDiv.style.backgroundColor = "#e8f5fd";
 		} else {
 			postDiv.style.backgroundColor = "#e9e9e9";
 		}
 
-		postLink.appendChild(postDiv);
-		timelineDiv.appendChild(postLink);
-
+		// Add post to timeline
+		timelineDiv.appendChild(postDiv);
 	}
 }
 
