@@ -29,7 +29,7 @@ const server = http.createServer((req, res) => {
             }
             res.end();    
         });
-    } else if (path.split('.')[1] == 'css') { // Javascript files
+    } else if (path.split('.')[1] == 'css') { // CSS files
         fs.readFile(__dirname + '/..' + path, function(error, data) {  
             if (error) {  
                 res.writeHead(404);  
