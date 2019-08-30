@@ -74,12 +74,6 @@ function buildTimeline(responseText) {
 		postDiv.className = "post"
 		postDiv.appendChild(userDiv);
 		postDiv.appendChild(tweetLink);
-		// Alternate colors
-		if (i % 2 == 0) {
-			postDiv.style.backgroundColor = "#e8f5fd";
-		} else {
-			postDiv.style.backgroundColor = "#e9e9e9";
-		}
 
 		// Add post to timeline
 		timelineDiv.appendChild(postDiv);
