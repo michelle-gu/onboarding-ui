@@ -6,4 +6,5 @@
 3. Go to http://127.0.0.1:9000/index.html on your preferred browser
 
 ### Webpack:
+`npm install`
 `npm run build`
