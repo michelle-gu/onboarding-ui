@@ -17,7 +17,7 @@ module.exports = {
     devtool: "source-map", // map
     module: {
         rules: [{
-            test: /\.(scss)$/,
+            test: /\.(css)$/,
             use: [
                 "style-loader",
                 "css-loader",
@@ -29,7 +29,8 @@ module.exports = {
             use: {
                 loader: 'babel-loader',
                 options: {
-                    presets: ['@babel/preset-env']
+                    "presets": [["@babel/env", { "modules": "commonjs" }]],
+                    "plugins": ["add-module-exports"]
                 }
             }
         }]

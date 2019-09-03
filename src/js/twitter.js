@@ -20,8 +20,8 @@ function buildTimeline(responseText) {
 	var timelineDiv = document.getElementById("timeline");
 	timelineDiv.innerHTML = "";
 
-	for (i = 0; i < jsonTimeline.length; i++) {
-		post = jsonTimeline[i];
+	for (var i = 0; i < jsonTimeline.length; i++) {
+		var post = jsonTimeline[i];
 
 		// Create user info part of post
 		var userDiv = document.createElement("div");
@@ -80,5 +80,8 @@ function buildTimeline(responseText) {
 	}
 }
 
-// Show timeline on load
-getTimeline();
+window.onload = function () {
+	getTimeline();
+	document.getElementById("timeline-button").onClick = getTimeline();
+}
+
