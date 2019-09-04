@@ -1,11 +1,11 @@
-path = require("path");
-webpack = require("webpack");
+const path = require("path");
+const webpack = require("webpack");
  
-module.exports = {
+const frontConfig = {
     mode: "development",
-    entry: "./src/js/main.js",
+    entry: "./src/js/twitter.js",
     output: {
-        filename: "bundle.js"
+        filename: "bundle-front.js"
     },
     devServer: {
         contentBase: path.resolve(__dirname, "./dist"),
@@ -29,13 +29,20 @@ module.exports = {
             use: {
                 loader: 'babel-loader',
                 options: {
-                    "presets": [["@babel/env", { "modules": "commonjs" }]],
-                    "plugins": ["add-module-exports"]
+                    presets: ['@babel/preset-env']
                 }
             }
         }]
-    },
-    node: {
-        fs: 'empty'
     }
-}
+};
+
+const backConfig = {
+    mode: "development",
+    entry: "./src/js/main.js",
+    target: "node",
+    output: {
+        filename: "bundle-back.js"
+    },
+};
+
+module.exports = [ frontConfig, backConfig ];

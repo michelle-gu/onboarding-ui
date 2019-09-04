@@ -1,3 +1,5 @@
+require('../css/twitter.css');
+
 // AJAX request for timeline
 function getTimeline() {
   	var xhr = new XMLHttpRequest();
@@ -84,4 +86,3 @@ window.onload = function () {
 	getTimeline();
 	document.getElementById("timeline-button").onClick = getTimeline();
 }
-
