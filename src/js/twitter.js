@@ -67,6 +67,7 @@ function buildTimeline(responseText) {
 
 		// Link tweet to twitter
 		var tweetLink = document.createElement("a");
+		tweetLink.className = "link"
 		tweetLink.href = post.url;
 		tweetLink.target = "_blank"
 		tweetLink.appendChild(tweetDiv);
