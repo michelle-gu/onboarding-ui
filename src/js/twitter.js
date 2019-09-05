@@ -1,4 +1,4 @@
-require('../css/twitter.css');
+require('../scss/twitter.scss');
 
 // AJAX request for timeline
 function getTimeline() {
@@ -67,6 +67,7 @@ function buildTimeline(responseText) {
 
 		// Link tweet to twitter
 		var tweetLink = document.createElement("a");
+		tweetLink.className = "link"
 		tweetLink.href = post.url;
 		tweetLink.target = "_blank"
 		tweetLink.appendChild(tweetDiv);
