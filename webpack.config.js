@@ -17,7 +17,7 @@ const frontConfig = {
     devtool: "source-map", // map
     module: {
         rules: [{
-            test: /\.(css)$/,
+            test: /\.(scss|css)$/,
             use: [
                 "style-loader",
                 "css-loader",

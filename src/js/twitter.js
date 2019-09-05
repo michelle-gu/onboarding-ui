@@ -1,4 +1,4 @@
-require('../css/twitter.css');
+require('../scss/twitter.scss');
 
 // AJAX request for timeline
 function getTimeline() {
