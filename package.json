@@ -24,7 +24,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack --config webpack.config.js && webpack-dev-server"
+    "dev": "node-sass src/scss/twitter.scss src/css/twitter.css && webpack --config webpack.config.js && webpack-dev-server"
   },
   "repository": {
     "type": "git",
