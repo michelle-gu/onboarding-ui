@@ -30,44 +30,44 @@ var buildTimeline =  (responseText) => {
 		let post = jsonTimeline[i];
 
 		// Create user info part of post
-		let userDiv = document.createElement("div");
-		userDiv.className = "user"
+		// let userDiv = document.createElement("div");
+		// userDiv.className = "user"
 
-		let image = document.createElement("img");
-		image.id = "profile-img";
+		// let image = document.createElement("img");
+		// image.id = "profile-img";
 		image.src = post.user.profileImageUrl;
 
-		let nameSpan = document.createElement("span");
-		nameSpan.className = "name";
+		// let nameSpan = document.createElement("span");
+		// nameSpan.className = "name";
 		let name = document.createTextNode(post.user.name);
-		nameSpan.appendChild(name);
+		// nameSpan.appendChild(name);
 
-		let screenNameSpan = document.createElement("span");
-		screenNameSpan.className = "name small-text";
+		// let screenNameSpan = document.createElement("span");
+		// screenNameSpan.className = "name small-text";
 		let screenName = document.createTextNode(post.user.twitterHandle);
-		screenNameSpan.appendChild(screenName);
+		// screenNameSpan.appendChild(screenName);
 
-		userDiv.appendChild(image);
-		userDiv.appendChild(nameSpan);
-		userDiv.appendChild(screenNameSpan);
+		// userDiv.appendChild(image);
+		// userDiv.appendChild(nameSpan);
+		// userDiv.appendChild(screenNameSpan);
 
 		// Create tweet info part of post
-		let tweetDiv = document.createElement("div");
-		tweetDiv.className = "tweet"
+		// let tweetDiv = document.createElement("div");
+		// tweetDiv.className = "tweet"
 
-		let timeDiv = document.createElement("div");
-		timeDiv.className = "date small-text";
-		let options = { month: 'short', day: 'numeric' };
+		// let timeDiv = document.createElement("div");
+		// timeDiv.className = "date small-text";
+		// let options = { month: 'short', day: 'numeric' };
 		let createdAt  = new Date(post.createdAt);
-		let time = document.createTextNode(createdAt.toLocaleDateString("en-US", options));
-		timeDiv.appendChild(time);
+		// let time = document.createTextNode(createdAt.toLocaleDateString("en-US", options));
+		// timeDiv.appendChild(time);
 
-		let messageDiv = document.createElement("div");
+		// let messageDiv = document.createElement("div");
 		let message = document.createTextNode(post.message);
-		messageDiv.appendChild(message);
+		// messageDiv.appendChild(message);
 
-		tweetDiv.appendChild(timeDiv);
-		tweetDiv.appendChild(messageDiv);
+		// tweetDiv.appendChild(timeDiv);
+		// tweetDiv.appendChild(messageDiv);
 
 		// Link tweet to twitter
 		let tweetLink = document.createElement("a");
