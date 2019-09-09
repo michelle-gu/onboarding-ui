@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import Post from "./Post.jsx";
 
 class Timeline extends Component {
@@ -8,14 +7,26 @@ class Timeline extends Component {
     	super();
   	}
 
+  	generatePosts() {
+  		return this.props.timeline.map((post, index) => {
+        return <Post key={index}
+                     profileImageUrl={post.user.profileImageUrl}
+                     name={post.user.name}
+                     twitterHandle={post.user.twitterHandle}
+                     createdAt={post.createdAt}
+                     message={post.message}
+                     url={post.url} />;
+      });
+  	}
+
   	render() {
     	return (
-      		<Post></Post>
+    		<div id="timeline">
+    			{this.generatePosts()}
+    		</div>
     	);
   	}
 
 }
 
 export default Timeline;
-
-ReactDOM.render(<Timeline />, document.getElementById("timeline-div"));

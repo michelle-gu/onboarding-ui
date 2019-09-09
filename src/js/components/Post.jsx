@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 
 class Post extends Component {
 
@@ -15,27 +14,23 @@ class Post extends Component {
 
   	render() {
     	return (
-    		<div className="user">
-    			<img id="profile-img" src={this.props.profileImgUrl}></img>
-    			<span className="name">{this.props.name}</span>
-    			<span className="name small-text">{this.props.twitterHandle}</span>
-    		</div>
-
-        <a>
-      		<div className="tweet">
-      			<div className="date small-text">{this.getCreatedAt()}</div>
-      			<div>{this.props.message}</div>
+        <div className="post">
+      		<div className="user">
+      			<img id="profile-img" src={this.props.profileImageUrl}></img>
+      			<span className="name">{this.props.name}</span>
+      			<span className="name small-text">{this.props.twitterHandle}</span>
       		</div>
-        </a>
+
+          <a className="link" href={this.props.url} target="_blank">
+        		<div className="tweet">
+        			<div className="date small-text">{this.getCreatedAt()}</div>
+        			<div>{this.props.message}</div>
+        		</div>
+          </a>
+        </div>
     	);
   	}
 
 }
-
-Post.defaultProps = {
-	profileImgUrl: "",
-  	name: "name",
-  	twitterHandle: "twitterHandle",
-};
 
 export default Post;
