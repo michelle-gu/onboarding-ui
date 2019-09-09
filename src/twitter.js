@@ -1,4 +1,7 @@
 import Hello from "./js/components/Hello.jsx";
+import ReactDOM from "react-dom";
+import React, { Component } from "react";
+
 require('./scss/twitter.scss');
 
 // AJAX request for timeline
@@ -87,5 +90,5 @@ var buildTimeline =  (responseText) => {
 window.onload = () => {
 	getTimeline();
 	document.getElementById("timeline-button").onClick = getTimeline();
-	ReactDOM.render(<Hello />, document.getElementById("hello-react"));
+	ReactDOM.render(<Hello />, document.getElementById("hello-react"));	
 }
