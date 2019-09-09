@@ -21,10 +21,12 @@ class Post extends Component {
     			<span className="name small-text">{this.props.twitterHandle}</span>
     		</div>
 
-    		<div className="tweet">
-    			<div className="date small-text">{this.getCreatedAt()}</div>
-    			<div></div>
-    		</div>
+        <a>
+      		<div className="tweet">
+      			<div className="date small-text">{this.getCreatedAt()}</div>
+      			<div>{this.props.message}</div>
+      		</div>
+        </a>
     	);
   	}
 
