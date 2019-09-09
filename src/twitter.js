@@ -1,6 +1,6 @@
-import Hello from "./js/components/Hello.jsx";
 import ReactDOM from "react-dom";
 import React from "react";
+// import Timeline from "./js/components/Timeline.jsx";
 
 require('./scss/twitter.scss');
 
@@ -90,5 +90,5 @@ var buildTimeline =  (responseText) => {
 window.onload = () => {
 	getTimeline();
 	document.getElementById("timeline-button").onClick = getTimeline();
-	ReactDOM.render(<Hello />, document.getElementById("hello-react"));	
+	// ReactDOM.render(<Hello />, document.getElementById("hello-react"));	
 }
