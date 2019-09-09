@@ -87,4 +87,5 @@ var buildTimeline =  (responseText) => {
 window.onload = () => {
 	getTimeline();
 	document.getElementById("timeline-button").onClick = getTimeline();
+	ReactDOM.render(<Hello />, document.getElementById("hello-react"));
 }
