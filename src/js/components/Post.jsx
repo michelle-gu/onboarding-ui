@@ -7,6 +7,12 @@ class Post extends Component {
     	super();
   	}
 
+    getCreatedAt() {
+      let options = { month: 'short', day: 'numeric' };
+      let createdAt  = new Date(this.props.createdAt);
+      return createdAt.toLocaleDateString("en-US", options);
+    }
+
   	render() {
     	return (
     		<div className="user">
@@ -16,7 +22,7 @@ class Post extends Component {
     		</div>
 
     		<div className="tweet">
-    			<div className="date small-text"></div>
+    			<div className="date small-text">{this.getCreatedAt()}</div>
     			<div></div>
     		</div>
     	);
