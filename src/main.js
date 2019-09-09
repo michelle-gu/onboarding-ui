@@ -6,9 +6,9 @@ const hostname = '127.0.0.1';
 const port = 9000;
 
 const server = http.createServer((req, res) => {
-    var path = url.parse(req.url).pathname;  
+    let path = url.parse(req.url).pathname;  
     if (path === '/') { // Home page
-        fs.readFile(__dirname + '/../index.html', function(error, data) {  
+        fs.readFile(__dirname + '/../index.html', (error, data) => {  
             if (error) {  
                 res.writeHead(404);  
                 res.write('File not found');  
@@ -18,8 +18,8 @@ const server = http.createServer((req, res) => {
             }
             res.end();    
         });  
-    } else if (path.split('.')[1] == 'js') { // Javascript files
-        fs.readFile(__dirname + path, function(error, data) {  
+    } else if (path.split('.')[1] == 'js' || path.split('.')[1] == 'jsx') { // Javascript files
+        fs.readFile(__dirname + path, (error, data) => {  
             if (error) {  
                 res.writeHead(404);  
                 res.write('File not found');  
@@ -30,7 +30,7 @@ const server = http.createServer((req, res) => {
             res.end();    
         });
     } else if (path.split('.')[1] == 'css') { // CSS files
-        fs.readFile(__dirname + '/..' + path, function(error, data) {  
+        fs.readFile(__dirname + '/..' + path, (error, data) => {  
             if (error) {  
                 res.writeHead(404);  
                 res.write('File not found');  
