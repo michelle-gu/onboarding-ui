@@ -1,6 +1,6 @@
 import Hello from "./js/components/Hello.jsx";
 import ReactDOM from "react-dom";
-import React, { Component } from "react";
+import React from "react";
 
 require('./scss/twitter.scss');
 
