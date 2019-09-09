@@ -2,7 +2,7 @@ import Hello from "./js/components/Hello.jsx";
 require('./scss/twitter.scss');
 
 // AJAX request for timeline
-function getTimeline() {
+var getTimeline = () => {
   	let xhr = new XMLHttpRequest();
     xhr.open('GET', 'http://127.0.0.1:8080/api/1.0/twitter/timeline', true);
 	xhr.onreadystatechange = () => {
@@ -18,7 +18,7 @@ function getTimeline() {
 }
 
 // Use JS to dynamically build timeline
-function buildTimeline(responseText) {
+var buildTimeline =  (responseText) => {
 	let jsonTimeline = JSON.parse(responseText).timeline;
 	let timelineDiv = document.getElementById("timeline");
 	timelineDiv.innerHTML = "";
