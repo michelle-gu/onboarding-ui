@@ -17,5 +17,4 @@ class Hello extends Component {
 
 export default Hello;
 
-const hello = document.getElementById("hello-react");
-hello ? ReactDOM.render(<Hello />, hello) : false;
+ReactDOM.render(<Hello />, document.getElementById("hello-react"));
