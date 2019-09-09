@@ -1,4 +1,4 @@
-import Hello from "./js/components/Hello.jsx";
+// import Timeline from "./js/components/Timeline.jsx";
 require('./scss/twitter.scss');
 
 // AJAX request for timeline
