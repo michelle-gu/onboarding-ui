@@ -10,91 +10,91 @@ $blue-row-color: #e8f5fd;
 $gray-row-color: #e9e9e9;
 
 .segoe-font {
-	font-family: $font-stack;
+    font-family: $font-stack;
 
-	.title {
-		font-size: $title-font-size;
-		font-weight: bold;
-		text-align: center;
-	}
+    .title {
+        font-size: $title-font-size;
+        font-weight: bold;
+        text-align: center;
+    }
 
-	#timeline-button-div {
-		padding-left: $border-padding;
+    #timeline-button-div {
+        padding-left: $border-padding;
 
-		.button {
-			font-size: $small-font-size;
-			border-radius: 25px;
-			padding: 5px 10px;
-		}
-	}
+        .button {
+            font-size: $small-font-size;
+            border-radius: 25px;
+            padding: 5px 10px;
+        }
+    }
 
-	#timeline-div {
-		padding: 10px $border-padding $border-padding $border-padding;
+    #timeline-div {
+        padding: 10px $border-padding $border-padding $border-padding;
 
-		#timeline {
-			border: 1px solid;
+        #timeline {
+            border: 1px solid;
 
-			.post {
-				font-size: $body-font-size;
-				border-bottom: 1px solid lightgray;
-				height: $row-height;
-				display: flex;
-				align-items: center;
+            .post {
+                font-size: $body-font-size;
+                border-bottom: 1px solid lightgray;
+                height: $row-height;
+                display: flex;
+                align-items: center;
 
-				.small-text {
-					font-weight: normal;
-					font-size: $small-font-size;
-				}
+                .small-text {
+                    font-weight: normal;
+                    font-size: $small-font-size;
+                }
 
-				%flex-tweet {
-					display: flex;
-					flex-direction: column;
-					justify-content: center;
-				}
+                %flex-tweet {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
 
-				.user {
-					@extend %flex-tweet;
-					align-items: center;
-					flex: 0 0 $row-height;
-					padding: 12px 22px;
+                .user {
+                    @extend %flex-tweet;
+                    align-items: center;
+                    flex: 0 0 $row-height;
+                    padding: 12px 22px;
 
-					#profile-img {
-						border-radius: 50%;
-				    	width: $profile-img-size;
-				    	height: $profile-img-size;
-					}
+                    #profile-img {
+                        border-radius: 50%;
+                        width: $profile-img-size;
+                        height: $profile-img-size;
+                    }
 
-					.name {
-						font-weight: bold;
-						text-align: center;
-					}
-				}
+                    .name {
+                        font-weight: bold;
+                        text-align: center;
+                    }
+                }
 
-				.link {
-					color: $font-color;
-					text-decoration: none;
+                .link {
+                    color: $font-color;
+                    text-decoration: none;
 
-					.tweet {
-						@extend %flex-tweet;
-						align-items: left;
+                    .tweet {
+                        @extend %flex-tweet;
+                        align-items: left;
 
-						.date {
-							font-style: italic;
-							padding-bottom: 5px;
-						}
-					}
-				}
-			}
+                        .date {
+                            font-style: italic;
+                            padding-bottom: 5px;
+                        }
+                    }
+                }
+            }
 
-			.post:nth-of-type(odd) {
-				background-color: $blue-row-color;
-			}
+            .post:nth-of-type(odd) {
+                background-color: $blue-row-color;
+            }
 
-			.post:nth-of-type(even) {
-				background-color: $gray-row-color;
-			}
+            .post:nth-of-type(even) {
+                background-color: $gray-row-color;
+            }
 
-		}
-	}
+        }
+    }
 }
 

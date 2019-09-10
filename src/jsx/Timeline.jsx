@@ -3,12 +3,12 @@ import Post from "./Post.jsx";
 
 class Timeline extends Component {
 
-  	constructor() {
-    	super();
-  	}
+    constructor() {
+      super();
+    }
 
-  	generatePosts() {
-  		return this.props.timeline.map((post, index) => {
+    generatePosts() {
+      return this.props.timeline.map((post, index) => {
         let options = { month: 'short', day: 'numeric' };
         let createdAt  = new Date(post.createdAt).toLocaleDateString("en-US", options);
         return <Post key={index}
@@ -19,15 +19,15 @@ class Timeline extends Component {
                      message={post.message}
                      url={post.url} />;
       });
-  	}
+    }
 
-  	render() {
-    	return (
-    		<div id="timeline">
-    			{this.generatePosts()}
-    		</div>
-    	);
-  	}
+    render() {
+      return (
+        <div id="timeline">
+          {this.generatePosts()}
+        </div>
+      );
+    }
 
 }
 
