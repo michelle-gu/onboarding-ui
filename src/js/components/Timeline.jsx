@@ -9,11 +9,13 @@ class Timeline extends Component {
 
   	generatePosts() {
   		return this.props.timeline.map((post, index) => {
+        let options = { month: 'short', day: 'numeric' };
+        let createdAt  = new Date(post.createdAt).toLocaleDateString("en-US", options);
         return <Post key={index}
                      profileImageUrl={post.user.profileImageUrl}
                      name={post.user.name}
                      twitterHandle={post.user.twitterHandle}
-                     createdAt={post.createdAt}
+                     createdAt={createdAt}
                      message={post.message}
                      url={post.url} />;
       });

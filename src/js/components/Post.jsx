@@ -6,12 +6,6 @@ class Post extends Component {
     	super();
   	}
 
-    getCreatedAt() {
-      let options = { month: 'short', day: 'numeric' };
-      let createdAt  = new Date(this.props.createdAt);
-      return createdAt.toLocaleDateString("en-US", options);
-    }
-
   	render() {
     	return (
         <div className="post">
@@ -23,7 +17,7 @@ class Post extends Component {
 
           <a className="link" href={this.props.url} target="_blank">
         		<div className="tweet">
-        			<div className="date small-text">{this.getCreatedAt()}</div>
+        			<div className="date small-text">{this.props.createdAt}</div>
         			<div>{this.props.message}</div>
         		</div>
           </a>
