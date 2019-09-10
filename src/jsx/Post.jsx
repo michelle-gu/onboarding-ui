@@ -2,8 +2,11 @@ import React, { Component } from "react";
 
 class Post extends Component {
 
-    constructor() {
-      super();
+    constructor(props) {
+      super(props);
+
+      let options = { month: 'short', day: 'numeric' };
+      this.createdAt = new Date(this.props.createdAt).toLocaleDateString("en-US", options);
     }
 
     render() {
@@ -17,7 +20,7 @@ class Post extends Component {
 
           <a className="link" href={this.props.url} target="_blank">
             <div className="tweet">
-              <div className="date small-text">{this.props.createdAt}</div>
+              <div className="date small-text">{this.createdAt}</div>
               <div>{this.props.message}</div>
             </div>
           </a>
