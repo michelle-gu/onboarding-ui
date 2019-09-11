@@ -18,9 +18,7 @@ class App extends Component {
     }
 
     getTimeline(newTimeline) {
-        this.setState((prevState, props) => {
-            return { timeline: newTimeline }
-        });
+        this.setState({ timeline: newTimeline });
     }
 
     render() {
