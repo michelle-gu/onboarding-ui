@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 
+const options = { month: 'short', day: 'numeric' };
+
 class Post extends Component {
 
     constructor(props) {
       super(props);
 
-      let options = { month: 'short', day: 'numeric' };
       this.createdAt = new Date(this.props.createdAt).toLocaleDateString("en-US", options);
     }
 
