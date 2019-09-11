@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import Post from "./Post.jsx";
+import React, { Component } from 'react';
+import Post from './Post.jsx';
 
 class Timeline extends Component {
 
