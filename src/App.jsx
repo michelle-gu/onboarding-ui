@@ -4,8 +4,8 @@ import { fetchTimeline } from './utils.js';
 
 class App extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
           timeline: [],
         };

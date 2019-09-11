@@ -3,8 +3,8 @@ import Post from './Post.jsx';
 
 class Timeline extends Component {
 
-    constructor() {
-      super();
+    constructor(props) {
+      super(props);
     }
 
     generatePosts() {
