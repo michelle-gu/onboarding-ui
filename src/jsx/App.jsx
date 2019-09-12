@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Timeline from "./jsx/Timeline.jsx";
-import { fetchTimeline } from './utils.js';
+import Timeline from "./Timeline.jsx";
+import { fetchTimeline } from '../utils.js';
 
 class App extends Component {
 
