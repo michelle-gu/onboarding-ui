@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
  
 const frontConfig = {
     mode: "development",
-    entry: "./src/twitter.js",
+    entry: "./src/index.js",
     output: {
         filename: "bundle-front.js"
     },
