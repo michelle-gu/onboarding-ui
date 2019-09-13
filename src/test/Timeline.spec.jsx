@@ -30,8 +30,6 @@ describe('Timeline without posts', () => {
     let wrapper;
     beforeEach(() => wrapper = shallow(<Timeline timeline={[]} />));
     
-    it('should render correctly', () => expect(wrapper).toMatchSnapshot());
-
     it('should render 1 <div />', () => {
         expect(wrapper.find('div').length).toEqual(1);
     });
@@ -42,9 +40,6 @@ describe('Timeline without posts', () => {
 describe('Timeline with posts', () => {
     let wrapper;
     beforeEach(() => wrapper = shallow(<Timeline timeline={exampleTimeline} />));
-    
-    it('should render correctly', () => expect(wrapper).toMatchSnapshot());
-
 
     it('should render 1 <div />', () => {
         expect(wrapper.find('div').length).toEqual(1);

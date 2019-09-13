@@ -4,14 +4,12 @@ import Post from '../jsx/Post';
 
 describe('Post', () => {
     let wrapper;
-    beforeEach(() => wrapper = shallow(<Post profileImageUrl={''} 
-                                             name={''} 
-                                             twitterHandle={''} 
-                                             createdAt={0} 
-                                             message={''} 
-                                             url={''} />));
-
-    it('should render correctly', () => expect(wrapper).toMatchSnapshot());
+    beforeEach(() => wrapper = shallow(<Post profileImageUrl={'http://pbs.twimg.com/profile_images/0/my_photo.jpg'} 
+                                             name={'myName'} 
+                                             twitterHandle={'myHandle'} 
+                                             createdAt={1568236459000} 
+                                             message={'Hello'} 
+                                             url={'https://twitter.com/myHandle/status/0'} />));
 
     it('should render 5 <div />', () => {
         expect(wrapper.find('div').length).toEqual(5);
