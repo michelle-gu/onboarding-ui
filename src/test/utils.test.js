@@ -35,14 +35,7 @@ describe('Utils', () => {
 
     it('fetch timeline success', () => {
         createXHRmock();
-
-        function callback(data) {
-            console.log("inside callback");
-            expect(data).toBe(exampleResponseText);
-            done();
-        }
-        fetchTimeline(callback);
-
+        fetchTimeline(() => { done(); });
         expect(open).toBeCalledWith('GET', 'http://127.0.0.1:8080/api/1.0/twitter/timeline', true);
         expect(send).toBeCalled();
     });
