@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Timeline with posts should render correctly 1`] = `
+<div
+  id="timeline"
+>
+  <Post
+    createdAt={1568236459000}
+    key="0"
+    message="Hello"
+    name="myName"
+    profileImageUrl="http://pbs.twimg.com/profile_images/0/my_photo.jpg"
+    twitterHandle="myHandle"
+    url="https://twitter.com/myHandle/status/0"
+  />
+  <Post
+    createdAt={1568236459001}
+    key="1"
+    message="Hi"
+    name="myName"
+    profileImageUrl="http://pbs.twimg.com/profile_images/0/my_photo.jpg"
+    twitterHandle="myHandle"
+    url="https://twitter.com/myHandle/status/1"
+  />
+</div>
+`;
+
+exports[`Timeline without posts should render correctly 1`] = `
+<div
+  id="timeline"
+/>
+`;

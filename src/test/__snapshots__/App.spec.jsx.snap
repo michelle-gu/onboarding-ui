@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should render correctly 1`] = `
+<div
+  className="App"
+>
+  <header
+    className="App-header title"
+  >
+    Lab for Mich
+  </header>
+  <div
+    id="timeline-button-div"
+  >
+    <button
+      className="button"
+      id="timeline-button"
+      onClick={[Function]}
+      type="button"
+    >
+      Get Timeline
+    </button>
+  </div>
+  <div
+    id="timeline-div"
+  >
+    <Timeline
+      timeline={Array []}
+    />
+  </div>
+</div>
+`;

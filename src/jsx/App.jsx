@@ -7,7 +7,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          timeline: [],
+            timeline: [],
         };
 
         this.getTimeline = this.getTimeline.bind(this);
