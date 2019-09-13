@@ -11,26 +11,40 @@ const exampleResponseText = JSON.stringify([{
         "url": "https://twitter.com/myHandle/status/0"
     }]);
 
-const mockXHR = {
-    open: jest.fn(),
-    send: jest.fn(),
-    readyState: 4,
-    status: 200,
-    responseText: exampleResponseText
-};
+let open, send, status, onload, setRequestHeader, response;
+function createXHRmock() {
+    open = jest.fn();
+    status = 200;
+    response = exampleResponseText;
+    send = jest.fn();
 
-describe('Utils', function() {
+    const xhrMockClass = function () {
+        return {
+            open,
+            send,
+            status,
+            setRequestHeader,
+            response
+        };
+    };
 
-    test('fetch timeline success', function(done) {
-        window.XMLHttpRequest = jest.fn(() => mockXHR);
+    window.XMLHttpRequest = jest.fn().mockImplementation(xhrMockClass);
+}
+
+describe('Utils', () => {
+
+    it('fetch timeline success', () => {
+        createXHRmock();
 
         function callback(data) {
-            // expect(data).toBe(exampleResponseText);
+            console.log("inside callback");
+            expect(data).toBe(exampleResponseText);
             done();
         }
         fetchTimeline(callback);
 
-        mockXHR.onreadystatechange();
+        expect(open).toBeCalledWith('GET', 'http://127.0.0.1:8080/api/1.0/twitter/timeline', true);
+        expect(send).toBeCalled();
     });
 
 });
