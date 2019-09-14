@@ -28,3 +28,16 @@ describe('Post', () => {
     });
 
 });
+
+
+
+// TODO: Post test -> have content and ensure the content is shown in the expected format
+
+// for a url tag: you could find an img tag and then ensure it has the right src url
+// if it was text in a div, i wouldn’t bother with div since its’ so generic and just ensure the content is there
+// mm so like i can use my props that are empty strings right now and put in sample data
+// component.contains(‘text’)
+// content as in the html elements it contains or text it contains yeah?
+// content  as in date info: Dec 30
+
+

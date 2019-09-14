@@ -49,4 +49,8 @@ describe('Timeline with posts', () => {
         expect(wrapper.find('Post').length).toEqual(wrapper.instance().props.timeline.length);
     });
 
+    it('posts should be inside div', () => {
+        
+    });
+
 });
