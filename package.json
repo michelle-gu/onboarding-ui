@@ -32,7 +32,7 @@
     "webpack-dev-server": "^3.8.0"
   },
   "scripts": {
-    "test": "jest --coverage",
+    "test": "jest",
     "dev": "webpack && webpack-dev-server --mode development"
   },
   "repository": {

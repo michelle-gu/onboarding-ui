@@ -10,20 +10,32 @@ describe('App', () => {
     let wrapper;
     beforeEach(() => wrapper = shallow(<App />));
 
-    it('should render 3 <div />', () => {
-        expect(wrapper.find('div').length).toEqual(3);
+    it('header should have title Lab for Mich', () => {
+        expect(wrapper.find('header').text()).toEqual('Lab for Mich');
     });
 
-    it('should render 1 <header />', () => {
-        expect(wrapper.find('header').length).toEqual(1);
+    it('button should be labeled Get Timeline', () => {
+        expect(wrapper.find('button').text()).toEqual('Get Timeline');
     });
 
-    it('should render 1 <button />', () => {
-        expect(wrapper.find('button').length).toEqual(1);
+    it('should render the Timeline Component with timeline state', () => {
+        expect(wrapper.containsMatchingElement(                
+            <div id="timeline-div">
+                <Timeline timeline={wrapper.instance().state.timeline} />
+            </div>)).toEqual(true);
     });
 
-    it('should render the Timeline Component', () => {
-        expect(wrapper.containsMatchingElement(<Timeline timeline={wrapper.instance().state.timeline} />)).toEqual(true);
+    it('Should render the Lab for Mich header, Get Timeline button, and timeline component in right order', () => {
+        expect(wrapper.containsMatchingElement(
+            <div className="App">
+                <header className="App-header title">Lab for Mich</header>
+                <div id="timeline-button-div">
+                    <button id="timeline-button" className="button" type="button" >Get Timeline</button>
+                </div>
+                <div id="timeline-div">
+                    <Timeline timeline={wrapper.instance().state.timeline} />
+                </div>
+            </div>)).toEqual(true);
     });
 
     it('test button click event', () => {
