@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import Timeline from "./jsx/Timeline.jsx";
-import { fetchTimeline } from './utils.js';
+import Timeline from "./Timeline.jsx";
+import { fetchTimeline } from '../utils.js';
 
 class App extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-          timeline: [],
+            timeline: [],
         };
 
         this.getTimeline = this.getTimeline.bind(this);
