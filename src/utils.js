@@ -11,7 +11,6 @@ export function fetchTimeline(getTimeline) {
         };
         xhr.onerror = () => reject(new Error('Error making request to get timeline.'));
         xhr.send();
-
     });
     const onResolved = (resolvedValue) => {
         getTimeline(JSON.parse(resolvedValue).timeline);
