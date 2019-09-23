@@ -14,15 +14,12 @@ class App extends Component {
     }
 
     updateTimeline() {
-        const onResolved = (jsonTimeline) => {
+        fetchTimeline().then((jsonTimeline) => {
             this.setState({ timeline: jsonTimeline });
-        };
-        const onRejected = (error) => {
+        }, (error) => {
             console.log(error);
             document.getElementById("timeline").innerHTML = "Unable to retrieve timeline at this time. Check back later.";
-        };
-
-        fetchTimeline().then(onResolved, onRejected)
+        });
     }
 
     componentDidMount() {
@@ -35,7 +32,7 @@ class App extends Component {
                 <header className="App-header title">Lab for Mich</header>
 
                 <div id="timeline-button-div">
-                    <button id="timeline-button" className="button" type="button" onClick={this.updateTimeline()} >Get Timeline</button>
+                    <button id="timeline-button" className="button" type="button" onClick={() => this.updateTimeline()} >Get Timeline</button>
                 </div>
 
                 <div id="timeline-div">

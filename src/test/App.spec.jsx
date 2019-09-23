@@ -39,20 +39,23 @@ describe('App', () => {
     });
 
     it('test button click event', () => {
-        utils.fetchTimeline = jest.fn();
+        wrapper.instance().updateTimeline = jest.fn();
         wrapper.find('button').simulate('click');
-        expect(utils.fetchTimeline).toHaveBeenCalledTimes(1);
+        expect(wrapper.instance().updateTimeline).toHaveBeenCalledTimes(1);
     });
 
     it('test `componentDidMount()`', () => {
-        utils.fetchTimeline = jest.fn();
+        wrapper.instance().updateTimeline = jest.fn();
         wrapper.instance().componentDidMount();
-        expect(utils.fetchTimeline).toHaveBeenCalledTimes(1);
+        expect(wrapper.instance().updateTimeline).toHaveBeenCalledTimes(1);
     });
 
-    it('test getTimeline function', () => {
-        wrapper.instance().getTimeline([{"message": "test"}]);
-        expect(wrapper.state('timeline')).toEqual([{"message": "test"}]);
+    it('test updateTimeline function', () => {
+        utils.fetchTimeline = jest.fn().mockReturnValue(new Promise((resolve, reject) => {
+            resolve([]);
+        }));
+        wrapper.instance().updateTimeline();
+        expect(utils.fetchTimeline).toHaveBeenCalledTimes(1);
     });
 
 });
