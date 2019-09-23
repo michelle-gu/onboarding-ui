@@ -15,6 +15,10 @@ describe('Post', () => {
         expect(wrapper.find('img').prop('src')).toBe('http://pbs.twimg.com/profile_images/0/my_photo.jpg');
     });
 
+    it('wrapper should contain name, myName', () => {
+        expect(wrapper.contains('myName')).toEqual(true);
+    })
+
     it('first span should contain name, myName', () => {
         expect(wrapper.find('span').at(0).text()).toEqual('myName');
     });
