@@ -16,14 +16,19 @@ class Timeline extends Component {
                          twitterHandle={post.user.twitterHandle}
                          createdAt={post.createdAt}
                          message={post.message}
-                         url={post.url} />;
+                         url={post.url}
+                         showHandle={this.props.showHandle} />;
         });
     }
 
     render() {
         return (
-            <div id="timeline">
-                {this.generatePosts()}
+            <div id={this.props.id} className="timeline">
+                {
+                    (Array.isArray(this.props.timeline))
+                        ? this.generatePosts()
+                        : this.props.timeline
+                }
             </div>
         );
     }
@@ -31,7 +36,12 @@ class Timeline extends Component {
 }
 
 Timeline.propTypes = { 
-    timeline: PropTypes.array.isRequired,
+    timeline: PropTypes.oneOfType([PropTypes.array, PropTypes.string]).isRequired,
+    showHandle: PropTypes.bool
 };
+
+Timeline.defaultProps = {
+    showHandle: true
+}
 
 export default Timeline;

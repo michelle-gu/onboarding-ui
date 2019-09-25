@@ -1,37 +1,84 @@
 $font-stack: "Segoe UI", Frutiger, "Helvetica Neue", Arial, sans-serif;
 $font-color: black;
-$title-font-size: 40px;
 $body-font-size: 15px;
 $small-font-size: 12px;
-$border-padding: 50px;
+$border-padding: 25px;
 $profile-img-size: 70px;
 $row-height: 150px;
-$blue-row-color: #e8f5fd;
-$gray-row-color: #e9e9e9;
 
 .segoe-font {
     font-family: $font-stack;
+}
 
-    .title {
-        font-size: $title-font-size;
-        font-weight: bold;
-        text-align: center;
+.title {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.timeline-header {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#home-timeline-container {
+    width: 55%;
+
+    #home-timeline-div {
+        padding: 10px 10px $border-padding $border-padding;
     }
 
-    #timeline-button-div {
-        padding-left: $border-padding;
+    .post:nth-of-type(odd) {
+        background-color: #e8f5fd;
+    }
 
-        .button {
-            font-size: $small-font-size;
-            border-radius: 25px;
-            padding: 5px 10px;
+    .post:nth-of-type(even) {
+        background-color: #e9e9e9;
+    }
+}
+
+#user-timeline-container {
+    width: 45%;
+
+    .timeline-button-div {
+        align-self: flex-end;
+        padding-right: $border-padding;
+    }
+
+    #user-timeline-div {
+        padding: 10px $border-padding $border-padding 10px;
+    }
+
+    .post:nth-of-type(odd) {
+        background-color: #f5f8fa;
+    }
+
+    .post:nth-of-type(even) {
+        background-color: #1da1f2;
+    }
+
+}
+
+#timelines-container {
+    display: flex;
+
+    .timeline-container {
+        display: flex;
+        flex-direction: column;
+        padding-top: 20px;
+
+        .timeline-button-div {
+            padding-left: $border-padding;
+
+            .button {
+                font-size: $small-font-size;
+                border-radius: 25px;
+                padding: 5px 10px;
+            }
         }
-    }
 
-    #timeline-div {
-        padding: 10px $border-padding $border-padding $border-padding;
-
-        #timeline {
+        .timeline {
             border: 1px solid;
 
             .post {
@@ -77,6 +124,7 @@ $gray-row-color: #e9e9e9;
                     .tweet {
                         @extend %flex-tweet;
                         align-items: left;
+                        padding: 10px 10px 10px 0px;
 
                         .date {
                             font-style: italic;
@@ -85,16 +133,6 @@ $gray-row-color: #e9e9e9;
                     }
                 }
             }
-
-            .post:nth-of-type(odd) {
-                background-color: $blue-row-color;
-            }
-
-            .post:nth-of-type(even) {
-                background-color: $gray-row-color;
-            }
-
         }
     }
 }
-
