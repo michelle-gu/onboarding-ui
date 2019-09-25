@@ -124,6 +124,7 @@ $row-height: 150px;
                     .tweet {
                         @extend %flex-tweet;
                         align-items: left;
+                        padding: 10px 10px 10px 0px;
 
                         .date {
                             font-style: italic;
