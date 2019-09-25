@@ -20,7 +20,7 @@ class App extends Component {
             this.setState({ timeline: jsonTimeline });
         }, (error) => {
             console.log(error);
-            document.getElementById("home-timeline").innerHTML = "Unable to retrieve timeline at this time. Check back later.";
+            this.setState({ timeline: "Unable to retrieve timeline at this time. Check back later." });
         });
     }
 
@@ -28,11 +28,11 @@ class App extends Component {
         fetchUserTimeline().then((jsonTimeline) => {
             this.setState({ userTimeline: jsonTimeline });
             if (jsonTimeline == []) {
-                document.getElementById("user-timeline").innerHTML = "No tweets are available, post a tweet!";
+                this.setState({ userTimeline: "No tweets are available, post a tweet!" });
             }
         }, (error) => {
             console.log(error);
-            document.getElementById("user-timeline").innerHTML = "Unable to retrieve timeline at this time. Check back later.";
+            this.setState({ userTimeline: "Unable to retrieve timeline at this time. Check back later." });
         });
     }
 

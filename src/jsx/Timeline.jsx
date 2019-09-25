@@ -24,7 +24,11 @@ class Timeline extends Component {
     render() {
         return (
             <div id={this.props.id} className="timeline">
-                {this.generatePosts()}
+                {
+                    (Array.isArray(this.props.timeline))
+                        ? this.generatePosts()
+                        : this.props.timeline
+                }
             </div>
         );
     }
@@ -32,7 +36,7 @@ class Timeline extends Component {
 }
 
 Timeline.propTypes = { 
-    timeline: PropTypes.array.isRequired,
+    timeline: PropTypes.oneOfType([PropTypes.array, PropTypes.string]).isRequired,
     showHandle: PropTypes.bool
 };
 
