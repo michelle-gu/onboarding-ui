@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
+import User from './User.jsx';
 
 const options = { month: 'short', day: 'numeric' };
 
@@ -14,11 +15,10 @@ class Post extends Component {
     render() {
         return (
             <div className="post">
-                <div className="user">
-                    <img id="profile-img" src={this.props.profileImageUrl}></img>
-                    <span className="name">{this.props.name}</span>
-                    <span className="name small-text">{this.props.twitterHandle}</span>
-                </div>
+                <User name={this.props.name} 
+                      twitterHandle={this.props.twitterHandle} 
+                      profileImageUrl={this.props.profileImageUrl} 
+                      showHandle={this.props.showHandle} /> 
 
                 <a className="link" href={this.props.url} target="_blank">
                     <div className="tweet">
@@ -38,7 +38,12 @@ Post.propTypes = {
     twitterHandle: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
     createdAt: PropTypes.number.isRequired,
-    message: PropTypes.string.isRequired
+    message: PropTypes.string.isRequired,
+    showHandle: PropTypes.bool
 };
+
+Post.defaultProps = {
+    showHandle: true
+}
 
 export default Post;
