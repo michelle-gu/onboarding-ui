@@ -1,4 +1,4 @@
-import { fetchTimeline } from '../utils.js';
+import { fetchTimeline, fetchUserTimeline } from '../utils.js';
 
 const exampleResponseText = JSON.stringify([{   
         "message": "Hello",
@@ -35,8 +35,15 @@ describe('Utils', () => {
 
     it('fetch timeline success', () => {
         createXHRmock();
-        fetchTimeline(() => { done(); });
+        fetchTimeline();
         expect(open).toBeCalledWith('GET', 'http://127.0.0.1:8080/api/1.0/twitter/timeline', true);
+        expect(send).toBeCalled();
+    });
+
+    it('fetch user timeline success', () => {
+        createXHRmock();
+        fetchUserTimeline();
+        expect(open).toBeCalledWith('GET', 'http://127.0.0.1:8080/api/1.0/twitter/user-timeline', true);
         expect(send).toBeCalled();
     });
 

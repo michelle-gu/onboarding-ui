@@ -14,7 +14,7 @@ export function fetchTimeline() {
     });
 }
 
-export function fetchUserTimeline(type) {
+export function fetchUserTimeline() {
     return new Promise((resolve, reject) => {
         let xhr = new XMLHttpRequest();
         xhr.open('GET', 'http://127.0.0.1:8080/api/1.0/twitter/user-timeline', true);
