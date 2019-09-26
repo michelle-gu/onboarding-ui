@@ -2,7 +2,7 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 import App from '../jsx/App';
 import Timeline from '../jsx/Timeline.jsx';
-import { fetchTimeline } from '../utils.js'
+import { fetchTimeline, fetchUserTimeline, fetchFilteredTimeline } from '../utils.js'
 
 const utils = require('../utils.js');
 
@@ -52,8 +52,14 @@ describe('App', () => {
                 <div id="timelines-container">
                     <div id="home-timeline-container" className="timeline-container">
                         <header className="timeline-header">Home Timeline</header>
-                        <div className="timeline-button-div">
-                            <button id="timeline-button" className="button" type="button" >Get Timeline</button>
+                        <div id="home-timeline-toolbar">
+                            <div className="timeline-button-div">
+                                <button id="timeline-button" className="button" type="button" >Get Timeline</button>
+                            </div>
+                            <div id="filter-div" >
+                                <input id="filter-input" type="text" placeholder="Filter" name="filter" />
+                                <input type="button" id="filter-button" className="button" disabled={true} />
+                            </div>
                         </div>
                         <div id="home-timeline-div" className="timeline-div">
                             <Timeline id="home-timeline" timeline={wrapper.instance().state.timeline} />
@@ -107,6 +113,14 @@ describe('App', () => {
         }));
         wrapper.instance().updateUserTimeline();
         expect(utils.fetchUserTimeline).toHaveBeenCalledTimes(1);
+    });
+
+    it('test filterTimeline function', () => {
+        utils.fetchFilteredTimeline = jest.fn().mockReturnValue(new Promise((resolve, reject) => {
+            resolve([]);
+        }));
+        wrapper.instance().filterTimeline();
+        expect(utils.fetchFilteredTimeline).toHaveBeenCalledTimes(1);
     });
 
 });
