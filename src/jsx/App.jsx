@@ -36,9 +36,10 @@ class App extends Component {
 
     updateUserTimeline() {
         fetchUserTimeline().then((jsonTimeline) => {
-            this.setState({ userTimeline: jsonTimeline });
-            if (jsonTimeline == []) {
+            if (jsonTimeline.length == 0) {
                 this.setState({ userTimeline: "No tweets are available, post a tweet!" });
+            } else {
+                this.setState({ userTimeline: jsonTimeline });
             }
         }, (error) => {
             console.log(error);
@@ -48,9 +49,11 @@ class App extends Component {
 
     filterTimeline(event) {
         fetchFilteredTimeline(this.state.filterValue).then((jsonTimeline) => {
-            this.setState({ timeline: jsonTimeline });
-            if (jsonTimeline == []) {
-                this.setState({ userTimeline: "No tweets are available, post a tweet!" });
+            console.log(jsonTimeline);
+            if (jsonTimeline.length == 0) {
+                this.setState({ timeline: "No tweets available with keyword: " + this.state.filterValue + ". Try something else!" });
+            } else {
+                this.setState({ timeline: jsonTimeline });
             }
         }, (error) => {
             console.log(error);
