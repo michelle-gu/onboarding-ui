@@ -22,8 +22,32 @@ $row-height: 150px;
     text-align: center;
 }
 
+.button {
+    font-size: $small-font-size;
+    border-radius: 25px;
+    padding: 5px 10px;
+}
+
 #home-timeline-container {
     width: 55%;
+
+    .timeline-button-div {
+        display: inline-block;
+    }
+
+    #filter-div {
+        display: inline-block;
+        float: right;
+        padding-right: 10px;
+
+        #filter-input {
+            margin-right: 5px;
+            border: 1px solid lightgray;
+            border-radius: 10px;
+            font-size: $small-font-size;
+            padding: 5px 10px;
+        }
+    }
 
     #home-timeline-div {
         padding: 10px 10px $border-padding $border-padding;
@@ -70,12 +94,6 @@ $row-height: 150px;
 
         .timeline-button-div {
             padding-left: $border-padding;
-
-            .button {
-                font-size: $small-font-size;
-                border-radius: 25px;
-                padding: 5px 10px;
-            }
         }
 
         .timeline {
