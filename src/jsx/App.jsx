@@ -49,7 +49,6 @@ class App extends Component {
 
     filterTimeline(event) {
         fetchFilteredTimeline(this.state.filterValue).then((jsonTimeline) => {
-            console.log(jsonTimeline);
             if (jsonTimeline.length == 0) {
                 this.setState({ timeline: "No tweets available with keyword: " + this.state.filterValue + ". Try something else!" });
             } else {
