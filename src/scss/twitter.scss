@@ -16,12 +16,6 @@ $row-height: 150px;
     text-align: center;
 }
 
-.timeline-header {
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-}
-
 .button {
     font-size: $small-font-size;
     border-radius: 25px;
@@ -29,8 +23,6 @@ $row-height: 150px;
 }
 
 #home-timeline-container {
-    width: 55%;
-
     .timeline-button-div {
         display: inline-block;
     }
@@ -38,7 +30,6 @@ $row-height: 150px;
     #filter-div {
         display: inline-block;
         float: right;
-        padding-right: 10px;
 
         #filter-input {
             margin-right: 5px;
@@ -48,11 +39,6 @@ $row-height: 150px;
             padding: 5px 10px;
         }
     }
-
-    #home-timeline-div {
-        padding: 10px 10px $border-padding $border-padding;
-    }
-
     .post:nth-of-type(odd) {
         background-color: #e8f5fd;
     }
@@ -63,15 +49,9 @@ $row-height: 150px;
 }
 
 #user-timeline-container {
-    width: 45%;
 
     .timeline-button-div {
         align-self: flex-end;
-        padding-right: $border-padding;
-    }
-
-    #user-timeline-div {
-        padding: 10px $border-padding $border-padding 10px;
     }
 
     .post:nth-of-type(odd) {
@@ -86,67 +66,106 @@ $row-height: 150px;
 
 #timelines-container {
     display: flex;
+    flex-direction:column;
+    padding: $border-padding;
+
+    .tabs {
+        display: flex;
+        border-bottom: 5px solid #ddd;
+
+        #home-tab {
+            margin-left: 0px;
+        }
+
+        #post-tab {
+            margin-right: 0px;
+        }
+
+        .tab {
+            margin: 2px 2px 0px 2px;
+            background-color: #f1f1f1;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .tab:hover {
+            background-color: #78bfea;
+        }
+
+        .active {
+            background-color: #ddd
+        }
+    }
 
     .timeline-container {
         display: flex;
         flex-direction: column;
-        padding-top: 20px;
+        padding-top: 10px;
 
-        .timeline-button-div {
-            padding-left: $border-padding;
-        }
+        .timeline-div {
+            padding-top: 10px;
 
-        .timeline {
-            border: 1px solid;
+            .timeline {
+                border: 1px solid;
 
-            .post {
-                font-size: $body-font-size;
-                border-bottom: 1px solid lightgray;
-                height: $row-height;
-                display: flex;
-                align-items: center;
-
-                .small-text {
-                    font-weight: normal;
-                    font-size: $small-font-size;
-                }
-
-                %flex-tweet {
+                .post {
+                    font-size: $body-font-size;
+                    border-bottom: 1px solid lightgray;
+                    height: $row-height;
                     display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                }
-
-                .user {
-                    @extend %flex-tweet;
                     align-items: center;
-                    flex: 0 0 $row-height;
-                    padding: 12px 22px;
 
-                    #profile-img {
-                        border-radius: 50%;
-                        width: $profile-img-size;
-                        height: $profile-img-size;
+                    .small-text {
+                        font-weight: normal;
+                        font-size: $small-font-size;
                     }
 
-                    .name {
-                        font-weight: bold;
-                        text-align: center;
+                    %flex-tweet {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
                     }
-                }
 
-                .link {
-                    color: $font-color;
-                    text-decoration: none;
-
-                    .tweet {
+                    .user {
                         @extend %flex-tweet;
-                        align-items: left;
-                        padding: 10px 10px 10px 0px;
+                        align-items: center;
+                        flex: 0 0 $row-height;
+                        padding: 12px 22px;
 
-                        .date {
-                            font-style: italic;
-                            padding-bottom: 5px;
+                        #profile-img {
+                            border-radius: 50%;
+                            width: $profile-img-size;
+                            height: $profile-img-size;
+                        }
+
+                        .name {
+                            font-weight: bold;
+                            text-align: center;
+                        }
+                    }
+
+                    .link {
+                        color: $font-color;
+                        text-decoration: none;
+
+                        .tweet {
+                            @extend %flex-tweet;
+                            align-items: left;
+                            padding: 10px 10px 10px 0px;
+
+                            .date {
+                                font-style: italic;
+                                padding-bottom: 5px;
+                            }
                         }
                     }
                 }

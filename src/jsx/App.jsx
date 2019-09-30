@@ -10,6 +10,7 @@ class App extends Component {
             timeline: [],
             userTimeline: [],
             filterValue: '',
+            activeTab: 'home-tab',
         };
 
         this.updateFilterValue = this.updateFilterValue.bind(this);
@@ -17,6 +18,8 @@ class App extends Component {
         this.updateUserTimeline = this.updateUserTimeline.bind(this);
         this.filterTimeline = this.filterTimeline.bind(this);
         this.enterToFilter = this.enterToFilter.bind(this);
+        this.setActiveTab = this.setActiveTab.bind(this);
+        this.showActiveTab = this.showActiveTab.bind(this);
     }
 
     updateFilterValue(event) {
@@ -67,19 +70,16 @@ class App extends Component {
         });
     }
 
-    componentDidMount() {
-        this.updateTimeline();
-        this.updateUserTimeline();
+    setActiveTab(event) {
+        this.setState({ activeTab: event.target.id });
+        event.target.className += " active";
     }
 
-    render() {
-        return (
-            <div className="App">
-                <header className="App-header title">Lab for Mich</header>
-
-                <div id="timelines-container">
+    showActiveTab() {
+        switch(this.state.activeTab) {
+            case 'home-tab':
+                return (
                     <div id="home-timeline-container" className="timeline-container">
-                        <header className="timeline-header">Home Timeline</header>
                         <div id="home-timeline-toolbar">
                             <div className="timeline-button-div">
                                 <button id="timeline-button" className="button" type="button" onClick={() => this.updateTimeline()} >Get Timeline</button>
@@ -93,9 +93,10 @@ class App extends Component {
                             <Timeline id="home-timeline" timeline={this.state.timeline} />
                         </div>
                     </div>
-
+                );
+            case 'user-tab':
+                return (
                     <div id="user-timeline-container" className="timeline-container">
-                        <header className="timeline-header">User Timeline</header>
                         <div className="timeline-button-div" >
                             <button id="timeline-button" className="button" type="button" onClick={() => this.updateUserTimeline()} >Get User Timeline</button>
                         </div>
@@ -103,6 +104,36 @@ class App extends Component {
                             <Timeline id="user-timeline" timeline={this.state.userTimeline} showHandle={false} />
                         </div>
                     </div>
+                );
+            case 'post-tab':
+                return (                    
+                    <div id="post-tweet-container" className="timeline-container">
+
+                    </div>
+                );
+            default:
+                return null;
+        }
+    }
+
+
+    componentDidMount() {
+        this.updateTimeline();
+        this.updateUserTimeline();
+    }
+
+    render() {
+        return (
+            <div className="App">
+                <header className="App-header title">Lab for Mich</header>
+
+                <div id="timelines-container">
+                    <div className="tabs">
+                        <button id="home-tab" className={this.state.activeTab == "home-tab" ? "tab active" : "tab"} onClick={this.setActiveTab}>Home Timeline</button>
+                        <button id="user-tab" className={this.state.activeTab == "user-tab" ? "tab active" : "tab"} onClick={this.setActiveTab}>User Timeline</button>
+                        <button id="post-tab" className={this.state.activeTab == "post-tab" ? "tab active" : "tab"} onClick={this.setActiveTab}>Post Tweet</button>
+                    </div>
+                    {this.showActiveTab()}
                 </div>
             </div>
         );
