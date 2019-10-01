@@ -41,3 +41,21 @@ export function fetchFilteredTimeline(keyword) {
         xhr.send();
     });
 }
+
+export function postTweet(message) {
+    let body = {
+                  "message": message,
+               };
+    return new Promise((resolve, reject) => {
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://localhost:8080/api/1.0/twitter/tweet', true);
+        xhr.setRequestHeader('Content-type', 'application/json');
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+                resolve(JSON.parse(xhr.responseText).timeline);
+            }
+        };
+        xhr.onerror = () => reject(new Error('Error making request to get timeline.'));
+        xhr.send(JSON.stringify(body));
+    });
+}

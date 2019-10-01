@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Timeline from "./Timeline.jsx";
-import { fetchTimeline, fetchUserTimeline, fetchFilteredTimeline } from "../utils.js";
+import { fetchTimeline, fetchUserTimeline, fetchFilteredTimeline, postTweet } from "../utils.js";
 
 class App extends Component {
 
@@ -11,6 +11,9 @@ class App extends Component {
             userTimeline: [],
             filterValue: '',
             activeTab: 'home-tab',
+            postStatus: '',
+            postCharCount: 0,
+            postMessage: '',
         };
 
         this.updateFilterValue = this.updateFilterValue.bind(this);
@@ -20,6 +23,13 @@ class App extends Component {
         this.enterToFilter = this.enterToFilter.bind(this);
         this.setActiveTab = this.setActiveTab.bind(this);
         this.showActiveTab = this.showActiveTab.bind(this);
+        this.updatePostCharCount = this.updatePostCharCount.bind(this);
+        this.postTweet = this.postTweet.bind(this);
+    }
+
+    updatePostCharCount(event) {
+        this.setState({ postMessage: event.target.value });
+        this.setState({ postCharCount: event.target.value.length });
     }
 
     updateFilterValue(event) {
@@ -70,6 +80,15 @@ class App extends Component {
         });
     }
 
+    postTweet() {
+        postTweet(this.state.postMessage).then(() => {
+            this.setState({ postStatus: "Success!" });
+        }, (error) => {
+            console.log(error);
+            this.setState({ postStatus: "Failed to post tweet. Try again later!"});
+        });
+    }
+
     setActiveTab(event) {
         this.setState({ activeTab: event.target.id });
         event.target.className += " active";
@@ -108,7 +127,16 @@ class App extends Component {
             case 'post-tab':
                 return (                    
                     <div id="post-tweet-container" className="timeline-container">
-
+                        <div id="text-area-div">
+                            <textarea id="post-tweet-textarea" name="hello" onChange={this.updatePostCharCount} autoFocus maxLength={280} rows={10} placeholder="What's happening?"></textarea>
+                            <div id="char-count-div">
+                                <span>{this.state.postCharCount}/280</span>
+                            </div>
+                        </div>
+                        <div id="post-status-bar">
+                            <span id="post-status">{this.state.postStatus}</span>
+                            <button className="button" disabled={this.state.postCharCount == 0} onClick={this.postTweet}>Tweet</button>
+                        </div>
                     </div>
                 );
             default:
