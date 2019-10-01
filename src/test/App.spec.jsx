@@ -14,20 +14,20 @@ describe('App', () => {
         expect(wrapper.find('header').at(0).text()).toEqual('Lab for Mich');
     });
 
-    it('second header should have title Lab for Mich', () => {
-        expect(wrapper.find('header').at(1).text()).toEqual('Home Timeline');
+    it('first button should be labeled Home Timeline', () => {
+        expect(wrapper.find('button').at(0).text()).toEqual('Home Timeline');
     });
 
-    it('third header should have title Lab for Mich', () => {
-        expect(wrapper.find('header').at(2).text()).toEqual('User Timeline');
+    it('second button should be labeled User Timeline', () => {
+        expect(wrapper.find('button').at(1).text()).toEqual('User Timeline');
     });
 
-    it('first button should be labeled Get Timeline', () => {
-        expect(wrapper.find('button').at(0).text()).toEqual('Get Timeline');
+    it('third button should be labeled Post Tweet', () => {
+        expect(wrapper.find('button').at(2).text()).toEqual('Post Tweet');
     });
 
-    it('second button should be labeled Get User Timeline', () => {
-        expect(wrapper.find('button').at(1).text()).toEqual('Get User Timeline');
+    it('fourth button should be labeled Get Timeline', () => {
+        expect(wrapper.find('button').at(3).text()).toEqual('Get Timeline');
     });
 
     it('should render the Home Timeline Component with timeline state', () => {
@@ -37,42 +37,30 @@ describe('App', () => {
             </div>)).toEqual(true);
     });
 
-    it('should render the User Timeline Component with timeline state', () => {
-        expect(wrapper.containsMatchingElement(                
-            <div id="user-timeline-div" className="timeline-div">
-                <Timeline id="user-timeline" timeline={wrapper.instance().state.userTimeline} showHandle={false} />
-            </div>)).toEqual(true);
-    });
-
     it('Should render the Lab for Mich header, Get Timeline button, and timeline component in right order', () => {
         expect(wrapper.containsMatchingElement(
             <div className="App">
                 <header className="App-header title">Lab for Mich</header>
 
                 <div id="timelines-container">
+                    <div className="tabs">
+                        <button id="home-tab">Home Timeline</button>
+                        <button id="user-tab">User Timeline</button>
+                        <button id="post-tab">Post Tweet</button>
+                    </div>
+
                     <div id="home-timeline-container" className="timeline-container">
-                        <header className="timeline-header">Home Timeline</header>
                         <div id="home-timeline-toolbar">
                             <div className="timeline-button-div">
-                                <button id="timeline-button" className="button" type="button" >Get Timeline</button>
+                                <button id="timeline-button" className="button" type="button">Get Timeline</button>
                             </div>
                             <div id="filter-div" >
-                                <input id="filter-input" type="text" placeholder="Filter" name="filter" />
-                                <input type="button" id="filter-button" className="button" disabled={true} />
+                                <input id="filter-input" type="text" placeholder="Filter" name="filter"/>
+                                <input type="button" id="filter-button" className="button" disabled={true} value="Filter" />
                             </div>
                         </div>
                         <div id="home-timeline-div" className="timeline-div">
                             <Timeline id="home-timeline" timeline={wrapper.instance().state.timeline} />
-                        </div>
-                    </div>
-
-                    <div id="user-timeline-container" className="timeline-container">
-                        <header className="timeline-header">User Timeline</header>
-                        <div className="timeline-button-div" >
-                            <button id="timeline-button" className="button" type="button" >Get User Timeline</button>
-                        </div>
-                        <div id="user-timeline-div" className="timeline-div">
-                            <Timeline id="user-timeline" timeline={wrapper.instance().state.userTimeline} showHandle={false} />
                         </div>
                     </div>
                 </div>
@@ -81,14 +69,8 @@ describe('App', () => {
 
     it('test get timeline button click event', () => {
         wrapper.instance().updateTimeline = jest.fn();
-        wrapper.find('button').at(0).simulate('click');
+        wrapper.find('button').at(3).simulate('click');
         expect(wrapper.instance().updateTimeline).toHaveBeenCalledTimes(1);
-    });
-
-    it('test get user timeline button click event', () => {
-        wrapper.instance().updateUserTimeline = jest.fn();
-        wrapper.find('button').at(1).simulate('click');
-        expect(wrapper.instance().updateUserTimeline).toHaveBeenCalledTimes(1);
     });
 
     it('test `componentDidMount()`', () => {
