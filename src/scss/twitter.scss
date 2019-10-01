@@ -94,6 +94,14 @@ $row-height: 150px;
             padding: 5px 10px;
             font-size: $small-font-size;
         }
+
+        .success {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
     }
 }
 
