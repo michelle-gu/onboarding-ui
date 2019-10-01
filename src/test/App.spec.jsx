@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 import App from '../jsx/App';
-import Timeline from '../jsx/Timeline.jsx';
+import HomeTimelineContainer from '../jsx/HomeTimelineContainer.jsx';
 import { fetchTimeline, fetchUserTimeline, fetchFilteredTimeline } from '../utils.js'
 
 const utils = require('../utils.js');
@@ -26,16 +26,16 @@ describe('App', () => {
         expect(wrapper.find('button').at(2).text()).toEqual('Post Tweet');
     });
 
-    it('fourth button should be labeled Get Timeline', () => {
-        expect(wrapper.find('button').at(3).text()).toEqual('Get Timeline');
-    });
+    // it('fourth button should be labeled Get Timeline', () => {
+    //     expect(wrapper.find('button').at(3).text()).toEqual('Get Timeline');
+    // });
 
-    it('should render the Home Timeline Component with timeline state', () => {
-        expect(wrapper.containsMatchingElement(                
-            <div id="home-timeline-div" className="timeline-div">
-                <Timeline id="home-timeline" timeline={wrapper.instance().state.timeline} />
-            </div>)).toEqual(true);
-    });
+    // it('should render the Home Timeline Component with timeline state', () => {
+    //     expect(wrapper.containsMatchingElement(                
+    //         <div id="home-timeline-div" className="timeline-div">
+    //             <Timeline id="home-timeline" timeline={wrapper.instance().state.timeline} />
+    //         </div>)).toEqual(true);
+    // });
 
     it('Should render the Lab for Mich header, Get Timeline button, and timeline component in right order', () => {
         expect(wrapper.containsMatchingElement(
@@ -49,61 +49,48 @@ describe('App', () => {
                         <button id="post-tab">Post Tweet</button>
                     </div>
 
-                    <div id="home-timeline-container" className="timeline-container">
-                        <div id="home-timeline-toolbar">
-                            <div className="timeline-button-div">
-                                <button id="timeline-button" className="button" type="button">Get Timeline</button>
-                            </div>
-                            <div id="filter-div" >
-                                <input id="filter-input" type="text" placeholder="Filter" name="filter"/>
-                                <input type="button" id="filter-button" className="button" disabled={true} value="Filter" />
-                            </div>
-                        </div>
-                        <div id="home-timeline-div" className="timeline-div">
-                            <Timeline id="home-timeline" timeline={wrapper.instance().state.timeline} />
-                        </div>
-                    </div>
+                    <HomeTimelineContainer/>
                 </div>
             </div>)).toEqual(true);
     });
 
-    it('test get timeline button click event', () => {
-        wrapper.instance().updateTimeline = jest.fn();
-        wrapper.find('button').at(3).simulate('click');
-        expect(wrapper.instance().updateTimeline).toHaveBeenCalledTimes(1);
-    });
+    // it('test get timeline button click event', () => {
+    //     wrapper.instance().updateTimeline = jest.fn();
+    //     wrapper.find('button').at(3).simulate('click');
+    //     expect(wrapper.instance().updateTimeline).toHaveBeenCalledTimes(1);
+    // });
 
-    it('test `componentDidMount()`', () => {
-        wrapper.instance().updateTimeline = jest.fn();
-        wrapper.instance().updateUserTimeline = jest.fn();
-        wrapper.instance().componentDidMount();
-        expect(wrapper.instance().updateTimeline).toHaveBeenCalledTimes(1);
-        expect(wrapper.instance().updateUserTimeline).toHaveBeenCalledTimes(1);
-    });
+    // it('test `componentDidMount()`', () => {
+    //     wrapper.instance().updateTimeline = jest.fn();
+    //     wrapper.instance().updateUserTimeline = jest.fn();
+    //     wrapper.instance().componentDidMount();
+    //     expect(wrapper.instance().updateTimeline).toHaveBeenCalledTimes(1);
+    //     expect(wrapper.instance().updateUserTimeline).toHaveBeenCalledTimes(1);
+    // });
 
-    it('test updateTimeline function', () => {
-        utils.fetchTimeline = jest.fn().mockReturnValue(new Promise((resolve, reject) => {
-            resolve([]);
-        }));
-        wrapper.instance().updateTimeline();
-        expect(utils.fetchTimeline).toHaveBeenCalledTimes(1);
-    });
+    // it('test updateTimeline function', () => {
+    //     utils.fetchTimeline = jest.fn().mockReturnValue(new Promise((resolve, reject) => {
+    //         resolve([]);
+    //     }));
+    //     wrapper.instance().updateTimeline();
+    //     expect(utils.fetchTimeline).toHaveBeenCalledTimes(1);
+    // });
 
-    it('test updateUserTimeline function', () => {
-        utils.fetchUserTimeline = jest.fn().mockReturnValue(new Promise((resolve, reject) => {
-            resolve([]);
-        }));
-        wrapper.instance().updateUserTimeline();
-        expect(utils.fetchUserTimeline).toHaveBeenCalledTimes(1);
-    });
+    // it('test updateUserTimeline function', () => {
+    //     utils.fetchUserTimeline = jest.fn().mockReturnValue(new Promise((resolve, reject) => {
+    //         resolve([]);
+    //     }));
+    //     wrapper.instance().updateUserTimeline();
+    //     expect(utils.fetchUserTimeline).toHaveBeenCalledTimes(1);
+    // });
 
-    it('test filterTimeline function', () => {
-        utils.fetchFilteredTimeline = jest.fn().mockReturnValue(new Promise((resolve, reject) => {
-            resolve([]);
-        }));
-        wrapper.instance().filterTimeline();
-        expect(utils.fetchFilteredTimeline).toHaveBeenCalledTimes(1);
-    });
+    // it('test filterTimeline function', () => {
+    //     utils.fetchFilteredTimeline = jest.fn().mockReturnValue(new Promise((resolve, reject) => {
+    //         resolve([]);
+    //     }));
+    //     wrapper.instance().filterTimeline();
+    //     expect(utils.fetchFilteredTimeline).toHaveBeenCalledTimes(1);
+    // });
 
 });
 
