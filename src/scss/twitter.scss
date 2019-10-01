@@ -80,7 +80,8 @@ $row-height: 150px;
         #char-count-div {
             position: absolute;
             bottom: 8px;
-            right: 5px; 
+            right: 10px; 
+            font-size: $small-font-size;
         }
     }
 
